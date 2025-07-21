@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(26, 26, 26);
+}
+
+.container {
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.header {
+    background-color: #0b0c10;
+    padding: 1.5rem 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #ffffff;
+    text-decoration: none;
+    justify-content: center;
+}
+
+.logo {
+    height: 70px;
+    width: auto;
+}
+
+.title {
+    font-size: 4rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/*Jumbotron*/
+.jumbotron {
+    height: 1000px;
+    width: 1700px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin: 0 auto;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+.animated-title {
+    font-size: 6rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.animated-letter {
+    opacity: 1;
+    display: inline-block;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.animated-letter.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+}
