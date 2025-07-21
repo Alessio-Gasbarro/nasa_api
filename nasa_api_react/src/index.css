@@ -6,6 +6,7 @@
 
 body {
     background-color: rgb(26, 26, 26);
+    font-family: 'Roboto', sans-serif;
 }
 
 .container {
@@ -78,4 +79,51 @@ body {
     opacity: 0;
     transform: translateY(20px);
     pointer-events: none;
+}
+
+/*Carosello Asteroidi*/
+.carousel-wrapper {
+    width: 100%;
+    overflow: hidden;
+    background-color: #111;
+    padding: 1rem 0;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    margin-top: 30px;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 2rem;
+    animation: scrollLeft 30s linear infinite;
+}
+
+@keyframes scrollLeft {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.asteroid-card {
+    flex: 0 0 200px;
+    background-color: #222;
+    border-radius: 10px;
+    padding: 1rem;
+    color: white;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.asteroid-image-placeholder {
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+}
+
+.hazardous {
+    color: #ff4c4c;
+    font-weight: bold;
 }
