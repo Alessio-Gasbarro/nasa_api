@@ -11,7 +11,7 @@ const NASA_API_KEY = process.env.NASA_API_KEY;
 app.use(cors());
 app.use(express.json());
 
-// Rotta esempio: Astronomy Picture of the Day (APOD)
+// Rotta: Astronomy Picture of the Day (APOD)
 app.get("/api/apod", async (req, res) => {
     try {
         const response = await axios.get(
@@ -24,7 +24,7 @@ app.get("/api/apod", async (req, res) => {
     }
 });
 
-// Nuova rotta: Asteroidi vicini alla Terra (NEO Feed)
+// Rotta: Asteroidi vicini alla Terra (NEO Feed)
 app.get("/api/asteroids", async (req, res) => {
     const today = new Date();
     const yyyy = today.getFullYear();
@@ -32,7 +32,6 @@ app.get("/api/asteroids", async (req, res) => {
     const dd = String(today.getDate()).padStart(2, "0");
     const start_date = `${yyyy}-${mm}-${dd}`;
 
-    // Data 7 giorni dopo
     const end = new Date(today);
     end.setDate(end.getDate() + 7);
     const yyyy2 = end.getFullYear();
@@ -46,16 +45,13 @@ app.get("/api/asteroids", async (req, res) => {
         );
         const data = response.data;
 
-        // Estrarre e appiattire i NEO
         let asteroids = [];
         for (let date in data.near_earth_objects) {
             asteroids = asteroids.concat(data.near_earth_objects[date]);
         }
 
-        // Prendere solo i primi 20
         asteroids = asteroids.slice(0, 20);
 
-        // Mappare i dati necessari
         const filtered = asteroids.map(a => ({
             id: a.id,
             name: a.name,
@@ -71,13 +67,20 @@ app.get("/api/asteroids", async (req, res) => {
     }
 });
 
-// Nuova rotta: Satellite Launches (The Space Devs API)
+// ✅ Rotta corretta: Satellite Launches (The Space Devs API)
 app.get("/api/launches", async (req, res) => {
     try {
         const response = await axios.get(
-            "https://llapi.thespacedevs.com/2.2.0/launch/upcoming/?limit=20"
+            "https://ll.thespacedevs.com/2.2.0/launch/upcoming/?limit=20"
         );
-        res.json(response.data);
+
+        const launches = response.data.results.map(launch => ({
+            id: launch.id,
+            name: launch.name,
+            image: launch.image,
+        }));
+
+        res.json({ results: launches });
     } catch (error) {
         console.error("Errore nella richiesta Launches:", error.message);
         res.status(500).json({ error: "Errore nella richiesta dati lanci" });

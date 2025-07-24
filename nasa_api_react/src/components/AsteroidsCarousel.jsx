@@ -24,13 +24,13 @@ function AsteroidsCarousel() {
                         <div className="asteroid-image-placeholder">☄️</div>
                         <h3>{asteroid.name}</h3>
                         <p>
-                            Diametro: {asteroid.estimated_diameter_min} - {asteroid.estimated_diameter_max} km
+                            Diameter: {asteroid.estimated_diameter_min} - {asteroid.estimated_diameter_max} km
                         </p>
                         <p>
                             {asteroid.is_potentially_hazardous_asteroid ? (
-                                <span className="hazardous">⚠️ Pericoloso</span>
+                                <span className="hazardous">⚠️ Dangerous Trajectory</span>
                             ) : (
-                                <span>Sicuro</span>
+                                <span>Safe Trajectory</span>
                             )}
                         </p>
                     </div>
